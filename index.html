@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Styra - Unapologetically You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            styraRed: '#DC2626',
+            styraBlack: '#000000',
+            styraGray: '#F3F4F6',
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    /* 1. Hero Heading Entrance (Slide Up) */
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-text-enter {
+      animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+      /* Start hidden */
+    }
+
+    /* 2. Hero Button Entrance (Scale Pop) */
+    @keyframes buttonPop {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero-btn-enter {
+      animation: buttonPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      /* Bouncy finish */
+      opacity: 0;
+      animation-delay: 0.5s;
+      /* Wait for text first */
+    }
+
+    /* 3. Image Scroll Reveal (Subtle Zoom In) */
+    .image-reveal {
+      opacity: 0;
+      transform: scale(0.95);
+      /* Start slightly zoomed out */
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .image-reveal.active {
+      opacity: 1;
+      transform: scale(1);
+      /* Smoothly zoom to normal */
+    }
+
+    /* 4. Image Hover Interaction (Slow Zoom) */
+    .interactive-image {
+      transition: transform 0.7s ease;
+      overflow: hidden;
+      /* Keep zoom inside container */
+    }
+
+    .interactive-image:hover {
+      transform: scale(1.05);
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-white text-styraBlack font-body">
+  <header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white shadow-sm" id="navbar">
+    <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-7 md:px-6">
+      <a href="#home" class="text-2xl font-bold uppercase tracking-[0.35em] font-display text-black">STYRA<span
+          class="text-[#DC2626]">.</span></a>
+      <nav class="hidden items-center gap-8 text-xs uppercase tracking-[0.3em] text-black/70 md:flex">
+        <a href="#home" class="transition-colors duration-300 hover:text-[#DC2626]">Home</a>
+        <a href="#about" class="transition-colors duration-300 hover:text-[#DC2626]">Manifesto</a>
+        <a href="#catalogs" class="transition-colors duration-300 hover:text-[#DC2626]">Collections</a>
+        <a href="#featured-on" class="transition-colors duration-300 hover:text-[#DC2626]">Featured On</a>
+        <a href="#contact" class="transition-colors duration-300 hover:text-[#DC2626]">Contact</a>
+      </nav>
+      <button id="menuToggle" class="md:hidden text-black">
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobileMenu" class="fixed inset-0 z-40 hidden bg-white">
+    <div
+      class="flex h-full flex-col items-center justify-center gap-10 text-2xl uppercase tracking-[0.3em] font-display">
+      <a href="#home" class="transition-colors duration-300 hover:text-[#DC2626]">Home</a>
+      <a href="#about" class="transition-colors duration-300 hover:text-[#DC2626]">Manifesto</a>
+      <a href="#catalogs" class="transition-colors duration-300 hover:text-[#DC2626]">Collections</a>
+      <a href="#featured-on" class="transition-colors duration-300 hover:text-[#DC2626]">Featured On</a>
+      <a href="#contact" class="transition-colors duration-300 hover:text-[#DC2626]">Contact</a>
+    </div>
+  </div>
+
+  <main>
+    <section id="home" class="relative flex items-center justify-center" style="height: calc(100vh - 88px);">
+      <video src="assets/hero_video.mp4" autoplay loop muted playsinline
+        class="absolute inset-0 w-full h-full object-cover z-0">
+      </video>
+      <div class="absolute inset-0 bg-black/50 z-10"></div>
+      <div class="relative z-20 flex w-full max-w-4xl flex-col items-center gap-6 px-4 text-center">
+        <p class="text-xs uppercase tracking-[0.4em] text-white hero-text-enter">The New Standard</p>
+        <h1
+          class="text-5xl md:text-8xl font-bold uppercase tracking-tight leading-none text-white font-display hero-text-enter">
+          STYRA<span class="text-[#DC2626]">.</span> UNAPOLOGETICALLY YOU.</h1>
+        <p class="text-lg md:text-xl font-light text-white leading-relaxed hero-text-enter">
+          Fashion that doesn’t ask for permission. We design pieces that let your true self shine through the noise.
+        </p>
+        <div class="flex w-full flex-col gap-4 md:w-auto md:flex-row hero-btn-enter">
+          <a href="#catalogs"
+            class="inline-flex items-center justify-center bg-[#DC2626] text-white font-bold uppercase tracking-widest px-8 py-4 hover:bg-red-800 transition-all leading-none md:w-auto">Explore
+            Collection</a>
+          <a href="#about"
+            class="w-full bg-transparent border-2 border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-black font-bold uppercase tracking-widest px-8 py-3 transition-all md:w-auto">The
+            Manifesto</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="mx-auto w-full max-w-6xl px-4 py-24 md:px-6 bg-white">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20">
+        <div class="w-full md:w-1/2 flex justify-center">
+          <div class="overflow-hidden rounded-2xl w-full max-w-lg image-reveal interactive-image">
+            <!-- `` -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop"
+              alt="Styra manifesto" class="w-full h-auto rounded-lg shadow-xl object-cover aspect-[4/3]" />
+          </div>
+        </div>
+        <div class="w-full md:w-1/2 text-left">
+          <p class="text-xs font-bold tracking-widest uppercase text-[#DC2626]">The Manifesto</p>
+          <h2 class="text-3xl md:text-5xl font-bold uppercase mb-6 text-black font-display">Not Just a Label. A
+            Statement<span class="text-[#DC2626]">.</span></h2>
+          <p class="text-lg md:text-xl font-light text-gray-800 leading-relaxed">
+            The world is full of "shoulds." You should wear this trend. You should fit this mold. At Styra, we believe
+            the only
+            person you should dress for is yourself.
+          </p>
+          <p class="mt-4 text-lg md:text-xl font-light text-gray-800 leading-relaxed">
+            Styra was born from a simple desire: to break the uniform. We create for the dreamers, the leaders, and the
+            quiet rebels.
+          </p>
+          <p class="mt-6 text-sm font-bold uppercase tracking-[0.3em] text-black">Be Bold. Be Authentic. Be
+            Unapologetically
+            You.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogs" class="bg-gray-50">
+      <div class="mx-auto w-full max-w-6xl px-4 py-24 md:px-6">
+        <div class="text-center">
+          <p class="text-xs uppercase tracking-[0.3em] text-black">Wear Your Vibe</p>
+          <h2 class="text-3xl md:text-5xl font-bold uppercase mb-6 text-black font-display">Wear Your Vibe<span
+              class="text-[#DC2626]">.</span></h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="relative h-96 overflow-hidden rounded-2xl bg-white group reveal reveal-delay-1">
+            <!-- `` -->
+            <div class="overflow-hidden h-full">
+              <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?q=80&w=1000" alt="The Daily Grind"
+                class="h-full w-full object-cover transform transition-transform duration-700 ease-in-out group-hover:scale-110" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20"></div>
+            <span
+              class="absolute left-6 top-6 rounded-full bg-[#D97706] px-3 py-1 text-[10px] uppercase tracking-[0.3em] text-white">Bestseller</span>
+            <div class="absolute bottom-6 left-6 space-y-2 text-white">
+              <h3 class="text-xl uppercase font-display">The Daily Grind</h3>
+              <p class="text-sm text-white/80">Command the room, comfortably.</p>
+              <button
+                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white">Shop
+                Essentials</button>
+            </div>
+          </div>
+          <div class="relative h-96 overflow-hidden rounded-2xl bg-white group reveal reveal-delay-2">
+            <!-- `` -->
+            <div class="overflow-hidden h-full">
+              <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?q=80&w=1000" alt="The After Hours"
+                class="h-full w-full object-cover transform transition-transform duration-700 ease-in-out group-hover:scale-110" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20"></div>
+            <div class="absolute bottom-6 left-6 space-y-2 text-white">
+              <h3 class="text-xl uppercase font-display">The After Hours</h3>
+              <p class="text-sm text-white/80">Own the night.</p>
+              <button
+                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white">Shop
+                Evening</button>
+            </div>
+          </div>
+          <div class="relative h-96 overflow-hidden rounded-2xl bg-white group reveal reveal-delay-3">
+            <!-- `` -->
+            <div class="overflow-hidden h-full">
+              <img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=1000&auto=format&fit=crop"
+                alt="The Weekend Edit"
+                class="h-full w-full object-cover transform transition-transform duration-700 ease-in-out group-hover:scale-110" />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20"></div>
+            <div class="absolute bottom-6 left-6 space-y-2 text-white">
+              <h3 class="text-xl uppercase font-display">The Weekend Edit</h3>
+              <p class="text-sm text-white/80">Simple, cozy, and unapologetically comfortable.</p>
+              <button
+                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white">Shop
+                Casual</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured-on" class="bg-white py-24 reveal">
+      <div class="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 px-4 text-center md:px-6">
+        <p class="text-xs font-bold tracking-widest uppercase text-[#DC2626] reveal">As Seen In</p>
+        <div class="w-12 h-1 bg-[#D97706] mx-auto mt-2"></div>
+        <div
+          class="flex flex-wrap items-center justify-center gap-8 text-sm font-semibold uppercase tracking-[0.3em] text-gray-400 reveal reveal-delay-1">
+          <span>VOGUE</span>
+          <span>GQ</span>
+          <span>ELLE</span>
+          <span>HARPER'S BAZAAR</span>
+          <span>HYPEBEAST</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-white reveal">
+      <div class="mx-auto w-full max-w-6xl px-4 py-24 md:px-6">
+        <div class="grid gap-10 md:grid-cols-2">
+          <div class="reveal">
+            <p class="text-xs uppercase tracking-[0.3em] text-black">Contact</p>
+            <h2 class="text-3xl md:text-5xl font-bold uppercase mb-6 text-black font-display">Let's Get Personal<span
+                class="text-[#DC2626]">.</span>
+            </h2>
+            <p class="text-lg md:text-xl font-light text-gray-700 leading-relaxed">
+              Have a question about a fit? Want styling advice? We believe in real connections. No bots, no scripts—just
+              us.
+            </p>
+            <p class="mt-4 text-lg md:text-xl font-light text-gray-700 leading-relaxed"><span
+                class="text-[#D97706]">hello@styra.com</span></p>
+            <div class="mt-6 flex gap-4 text-xs uppercase tracking-[0.3em] text-black">
+              <a href="#" class="transition-colors duration-300 hover:text-[#DC2626]">Instagram</a>
+              <a href="#" class="transition-colors duration-300 hover:text-[#DC2626]">Pinterest</a>
+              <a href="#" class="transition-colors duration-300 hover:text-[#DC2626]">YouTube</a>
+            </div>
+          </div>
+          <form class="space-y-4 rounded-2xl border border-black/10 bg-white p-6 reveal reveal-delay-1">
+            <input type="text" placeholder="Name"
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none" />
+            <input type="email" placeholder="Email"
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none" />
+            <textarea placeholder="Message" rows="4"
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none"></textarea>
+            <button
+              class="w-full bg-[#DC2626] px-4 py-3 text-xs uppercase tracking-[0.3em] text-white font-bold transition-all duration-300 hover:bg-red-800">Send
+              Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-black text-white reveal">
+    <div class="mx-auto grid w-full max-w-6xl gap-8 px-4 py-16 md:grid-cols-4 md:px-6">
+      <div class="reveal">
+        <h3 class="text-xl uppercase font-display text-white">STYRA<span class="text-[#DC2626]">.</span></h3>
+        <p class="text-sm text-gray-200">Unapologetically You.</p>
+      </div>
+      <div class="space-y-3 text-sm uppercase tracking-[0.25em] text-gray-200 reveal reveal-delay-1">
+        <a href="#home" class="transition-colors duration-300 hover:text-[#DC2626]">Home</a>
+        <a href="#about" class="transition-colors duration-300 hover:text-[#DC2626]">The Manifesto</a>
+        <a href="#catalogs" class="transition-colors duration-300 hover:text-[#DC2626]">Collections</a>
+        <a href="#featured-on" class="transition-colors duration-300 hover:text-[#DC2626]">As Seen In</a>
+        <a href="#contact" class="transition-colors duration-300 hover:text-[#DC2626]">Contact</a>
+      </div>
+      <div class="space-y-3 text-sm uppercase tracking-[0.25em] reveal reveal-delay-2">
+        <span class="text-[#D97706]">Instagram</span>
+        <span class="text-[#D97706]">Pinterest</span>
+        <span class="text-[#D97706]">YouTube</span>
+      </div>
+      <div class="space-y-3 reveal reveal-delay-3">
+        <p class="text-xs uppercase tracking-[0.3em] text-gray-200">Join the Movement.</p>
+        <input type="email" placeholder="Email address"
+          class="w-full border border-white/20 bg-black px-4 py-3 text-sm text-white focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none" />
+        <button
+          class="w-full bg-[#DC2626] px-4 py-3 text-xs uppercase tracking-[0.3em] text-white font-bold transition-all duration-300 hover:bg-red-800">Join
+          Now</button>
+        <p class="text-xs text-gray-200">The Unapologetic Guarantee: Not feeling it? Return it. No hard feelings.</p>
+      </div>
+    </div>
+    <div class="border-t border-[#D97706] py-6 text-center text-xs uppercase tracking-[0.3em] text-white/70">&copy; 2025
+      Styra Fashion. Designed in the city, worn worldwide.</div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const navBar = document.getElementById("navbar");
+
+    const toggleMenu = () => {
+      mobileMenu.classList.toggle("hidden");
+    };
+
+    menuToggle.addEventListener("click", toggleMenu);
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", toggleMenu);
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        navBar.classList.add("bg-white/95");
+      } else {
+        navBar.classList.remove("bg-white/95");
+      }
+    });
+
+    // Reveal animations
+    const revealElements = document.querySelectorAll('.reveal');
+    const imageRevealElements = document.querySelectorAll('.image-reveal');
+
+    const revealOnScroll = () => {
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+
+      imageRevealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+
+    // Initial check
+    revealOnScroll();
+
+    // Check on scroll
+    window.addEventListener('scroll', revealOnScroll);
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const navbarHeight = 88; // Height of navbar
+          const targetPosition = target.offsetTop - navbarHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
