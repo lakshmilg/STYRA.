@@ -121,7 +121,7 @@
 </head>
 
 <body class="bg-white text-styraBlack font-body">
-  <header class="sticky top-0 z-50 w-full border-b border-gray-200 bg-white shadow-sm" id="navbar">
+  <header class="sticky top-0 z-[1000] w-full border-b border-gray-200 bg-white shadow-sm" id="navbar">
     <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-7 md:px-6">
       <a href="#home" class="text-2xl font-bold uppercase tracking-[0.35em] font-display text-black">STYRA<span
           class="text-[#DC2626]">.</span></a>
@@ -142,7 +142,7 @@
 
   <div id="mobileMenu" class="fixed inset-0 z-40 hidden bg-white">
     <div
-      class="flex h-full flex-col items-center justify-center gap-10 text-2xl uppercase tracking-[0.3em] font-display">
+      class="flex h-full flex-col items-center justify-center gap-10 text-2xl uppercase tracking-[0.3em] font-display text-black">
       <a href="#home" class="transition-colors duration-300 hover:text-[#DC2626]">Home</a>
       <a href="#about" class="transition-colors duration-300 hover:text-[#DC2626]">Manifesto</a>
       <a href="#catalogs" class="transition-colors duration-300 hover:text-[#DC2626]">Collections</a>
@@ -152,25 +152,26 @@
   </div>
 
   <main>
-    <section id="home" class="relative flex items-center justify-center" style="height: calc(100vh - 88px);">
+    <section id="home" class="relative flex items-center justify-center min-h-[calc(100vh-88px)]">
       <video src="assets/hero_video.mp4" autoplay loop muted playsinline
         class="absolute inset-0 w-full h-full object-cover z-0">
       </video>
       <div class="absolute inset-0 bg-black/50 z-10"></div>
-      <div class="relative z-20 flex w-full max-w-4xl flex-col items-center gap-6 px-4 text-center">
+      <div
+        class="relative z-20 flex w-full max-w-4xl flex-col items-center gap-6 px-4 text-center md:px-6 pt-8 md:pt-0">
         <p class="text-xs uppercase tracking-[0.4em] text-white hero-text-enter">The New Standard</p>
         <h1
-          class="text-5xl md:text-8xl font-bold uppercase tracking-tight leading-none text-white font-display hero-text-enter">
+          class="text-3xl md:text-5xl lg:text-8xl font-bold uppercase tracking-tight leading-none text-white font-display hero-text-enter">
           STYRA<span class="text-[#DC2626]">.</span> UNAPOLOGETICALLY YOU.</h1>
         <p class="text-lg md:text-xl font-light text-white leading-relaxed hero-text-enter">
           Fashion that doesn’t ask for permission. We design pieces that let your true self shine through the noise.
         </p>
-        <div class="flex w-full flex-col gap-4 md:w-auto md:flex-row hero-btn-enter">
+        <div class="flex w-full flex-col gap-4 items-center md:w-auto md:flex-row hero-btn-enter">
           <a href="#catalogs"
-            class="inline-flex items-center justify-center bg-[#DC2626] text-white font-bold uppercase tracking-widest px-8 py-4 hover:bg-red-800 transition-all leading-none md:w-auto">Explore
+            class="inline-flex items-center justify-center bg-[#DC2626] text-white font-bold uppercase tracking-widest px-5 py-3 md:px-8 md:py-4 text-sm md:text-base hover:bg-red-800 transition-all leading-none rounded-[50px] w-[280px] md:w-[240px] whitespace-nowrap">Explore
             Collection</a>
           <a href="#about"
-            class="w-full bg-transparent border-2 border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-black font-bold uppercase tracking-widest px-8 py-3 transition-all md:w-auto">The
+            class="flex items-center justify-center bg-transparent border-2 border-[#D97706] text-[#D97706] hover:bg-[#D97706] hover:text-black font-bold uppercase tracking-widest px-5 py-3 md:px-8 md:py-3 text-sm md:text-base transition-all rounded-[50px] leading-none w-[280px] md:w-[240px]">The
             Manifesto</a>
         </div>
       </div>
@@ -226,7 +227,7 @@
               <h3 class="text-xl uppercase font-display">The Daily Grind</h3>
               <p class="text-sm text-white/80">Command the room, comfortably.</p>
               <button
-                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white">Shop
+                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white rounded-lg">Shop
                 Essentials</button>
             </div>
           </div>
@@ -241,7 +242,7 @@
               <h3 class="text-xl uppercase font-display">The After Hours</h3>
               <p class="text-sm text-white/80">Own the night.</p>
               <button
-                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white">Shop
+                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white rounded-lg">Shop
                 Evening</button>
             </div>
           </div>
@@ -257,7 +258,7 @@
               <h3 class="text-xl uppercase font-display">The Weekend Edit</h3>
               <p class="text-sm text-white/80">Simple, cozy, and unapologetically comfortable.</p>
               <button
-                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white">Shop
+                class="border border-[#DC2626] text-[#DC2626] px-4 py-2 text-xs uppercase tracking-[0.3em] transition-all duration-300 hover:bg-[#DC2626] hover:text-white rounded-lg">Shop
                 Casual</button>
             </div>
           </div>
@@ -302,13 +303,13 @@
           </div>
           <form class="space-y-4 rounded-2xl border border-black/10 bg-white p-6 reveal reveal-delay-1">
             <input type="text" placeholder="Name"
-              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none" />
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none rounded-lg" />
             <input type="email" placeholder="Email"
-              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none" />
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none rounded-lg" />
             <textarea placeholder="Message" rows="4"
-              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none"></textarea>
+              class="w-full border border-gray-300 bg-white px-4 py-3 text-sm text-black focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none rounded-lg"></textarea>
             <button
-              class="w-full bg-[#DC2626] px-4 py-3 text-xs uppercase tracking-[0.3em] text-white font-bold transition-all duration-300 hover:bg-red-800">Send
+              class="w-full bg-[#DC2626] px-4 py-3 text-xs uppercase tracking-[0.3em] text-white font-bold transition-all duration-300 hover:bg-red-800 rounded-lg">Send
               Message</button>
           </form>
         </div>
@@ -337,9 +338,9 @@
       <div class="space-y-3 reveal reveal-delay-3">
         <p class="text-xs uppercase tracking-[0.3em] text-gray-200">Join the Movement.</p>
         <input type="email" placeholder="Email address"
-          class="w-full border border-white/20 bg-black px-4 py-3 text-sm text-white focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none" />
+          class="w-full border border-white/20 bg-black px-4 py-3 text-sm text-white focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] focus:outline-none rounded-lg" />
         <button
-          class="w-full bg-[#DC2626] px-4 py-3 text-xs uppercase tracking-[0.3em] text-white font-bold transition-all duration-300 hover:bg-red-800">Join
+          class="w-full bg-[#DC2626] px-4 py-3 text-xs uppercase tracking-[0.3em] text-white font-bold transition-all duration-300 hover:bg-red-800 rounded-lg">Join
           Now</button>
         <p class="text-xs text-gray-200">The Unapologetic Guarantee: Not feeling it? Return it. No hard feelings.</p>
       </div>
