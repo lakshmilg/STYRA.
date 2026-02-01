@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
+/* 1. Hero Heading Entrance (Slide Up) */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text-enter {
+  animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  /* Start hidden */
+}
+
+/* 2. Hero Button Entrance (Scale Pop) */
+@keyframes buttonPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-btn-enter {
+  animation: buttonPop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  /* Bouncy finish */
+  opacity: 0;
+  animation-delay: 0.5s;
+  /* Wait for text first */
+}
+
+/* 3. Image Scroll Reveal (Subtle Zoom In) */
+.image-reveal {
+  opacity: 0;
+  transform: scale(0.95);
+  /* Start slightly zoomed out */
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.image-reveal.active {
+  opacity: 1;
+  transform: scale(1);
+  /* Smoothly zoom to normal */
+}
+
+/* 4. Image Hover Interaction (Slow Zoom) */
+.interactive-image {
+  transition: transform 0.7s ease;
+  overflow: hidden;
+  /* Keep zoom inside container */
+}
+
+.interactive-image:hover {
+  transform: scale(1.05);
+}
