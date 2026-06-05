@@ -8,11 +8,11 @@ STYRA is a responsive fashion landing page built with React, designed as a moder
 
 ## Preview
 
-![Hero](src/assets/hero_screenshot.png?v=1)
+![Hero](src/assets/hero_screenshot_v2.png)
 
-![Manifesto](src/assets/manifesto_screenshot.png?v=1)
+![Manifesto](src/assets/manifesto_screenshot_v2.png)
 
-Live Demo: Coming Soon
+Live Demo: [styra-psi.vercel.app](https://styra-psi.vercel.app/)
 
 ---
 
