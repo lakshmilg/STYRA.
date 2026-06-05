@@ -6,14 +6,25 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true)
+      const homeSection = document.getElementById('home')
+      if (homeSection) {
+        const rect = homeSection.getBoundingClientRect()
+        if (rect.bottom <= 0) {
+          setIsScrolled(true)
+        } else {
+          setIsScrolled(false)
+        }
       } else {
-        setIsScrolled(false)
+        if (window.scrollY > 500) {
+          setIsScrolled(true)
+        } else {
+          setIsScrolled(false)
+        }
       }
     }
 
     window.addEventListener('scroll', handleScroll)
+    handleScroll() // Run initial check
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -28,16 +39,22 @@ const Navbar = () => {
   return (
     <>
       <header 
-        className={`sticky top-0 z-[1000] w-full border-b border-gray-200 bg-white shadow-sm transition-all duration-300 ${
-          isScrolled ? 'bg-white/95' : ''
+        className={`sticky top-0 z-[1000] w-full border-b transition-all duration-75 ${
+          isScrolled 
+            ? 'bg-black border-zinc-800 shadow-md' 
+            : 'bg-white border-gray-200 shadow-sm'
         }`}
         id="navbar"
       >
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-7 md:px-6">
-          <a href="#home" className="text-2xl font-bold uppercase tracking-[0.35em] font-display text-black">
+          <a href="#home" className={`text-2xl font-bold uppercase tracking-[0.35em] font-display transition-colors duration-75 ${
+            isScrolled ? 'text-white' : 'text-black'
+          }`}>
             STYRA<span className="text-[#DC2626]">.</span>
           </a>
-          <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.3em] text-black/70 md:flex">
+          <nav className={`hidden items-center gap-8 text-xs uppercase tracking-[0.3em] transition-colors duration-75 md:flex ${
+            isScrolled ? 'text-white/70' : 'text-black/70'
+          }`}>
             <a href="#home" className="transition-colors duration-300 hover:text-[#DC2626]">Home</a>
             <a href="#about" className="transition-colors duration-300 hover:text-[#DC2626]">Manifesto</a>
             <a href="#catalogs" className="transition-colors duration-300 hover:text-[#DC2626]">Collections</a>
@@ -46,7 +63,9 @@ const Navbar = () => {
           </nav>
           <button 
             onClick={toggleMenu}
-            className="md:hidden text-black"
+            className={`md:hidden transition-colors duration-75 ${
+              isScrolled ? 'text-white' : 'text-black'
+            }`}
           >
             <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />

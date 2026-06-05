@@ -88,3 +88,19 @@
 .interactive-image:hover {
   transform: scale(1.05);
 }
+
+/* 5. Toast Slide Down/Pop Animation */
+@keyframes slideDownPop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDownPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

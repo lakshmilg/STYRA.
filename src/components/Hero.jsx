@@ -1,10 +1,11 @@
 import React from 'react'
+import heroVideo from '../assets/hero_video.mp4'
 
 const Hero = () => {
   return (
     <section id="home" className="relative flex items-center justify-center min-h-[calc(100vh-88px)]">
       <video 
-        src="assets/hero_video.mp4" 
+        src={heroVideo} 
         autoPlay 
         loop 
         muted 

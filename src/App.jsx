@@ -5,6 +5,7 @@ import Manifesto from './components/Manifesto'
 import VibeGallery from './components/VibeGallery'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
+import Toast from './components/Toast'
 
 function App() {
   useEffect(() => {
@@ -70,8 +71,10 @@ function App() {
         <ContactForm />
       </main>
       <Footer />
+      <Toast />
     </div>
   )
 }
 
 export default App
+
