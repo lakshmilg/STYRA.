@@ -9,7 +9,8 @@ const Navbar = () => {
       const homeSection = document.getElementById('home')
       if (homeSection) {
         const rect = homeSection.getBoundingClientRect()
-        if (rect.bottom <= 0) {
+        const navbarHeight = 88 // Height of the sticky navbar
+        if (rect.bottom <= navbarHeight) {
           setIsScrolled(true)
         } else {
           setIsScrolled(false)

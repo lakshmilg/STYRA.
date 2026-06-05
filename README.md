@@ -10,7 +10,7 @@ STYRA is a responsive fashion landing page built with React, designed as a moder
 
 ![Hero](src/assets/hero_screenshot.png)
 
-![Contact](src/assets/contact_screenshot.png)
+![Manifesto](src/assets/manifesto_screenshot.png)
 
 Live Demo: Coming Soon
 
