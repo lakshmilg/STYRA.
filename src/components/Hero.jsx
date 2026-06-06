@@ -5,13 +5,17 @@ const Hero = () => {
   return (
     <section id="home" className="relative flex items-center justify-center min-h-[calc(100vh-88px)]">
       <video 
-        src={heroVideo} 
         autoPlay 
         loop 
         muted 
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-0"
-      />
+      >
+        {/* IMPORTANT: Add your compressed .webm file here later for 5x faster loading */}
+        {/* <source src="your_compressed_video.webm" type="video/webm" /> */}
+        <source src={heroVideo} type="video/mp4" />
+      </video>
       <div className="absolute inset-0 bg-black/50 z-10"></div>
       <div 
         className="relative z-20 flex w-full max-w-4xl flex-col items-center gap-6 px-4 text-center md:px-6 pt-8 md:pt-0 select-none"
