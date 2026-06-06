@@ -13,9 +13,12 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
       <div className="absolute inset-0 bg-black/50 z-10"></div>
-      <div className="relative z-20 flex w-full max-w-4xl flex-col items-center gap-6 px-4 text-center md:px-6 pt-8 md:pt-0">
+      <div 
+        className="relative z-20 flex w-full max-w-4xl flex-col items-center gap-6 px-4 text-center md:px-6 pt-8 md:pt-0 select-none"
+        style={{ contentVisibility: 'auto', containIntrinsicSize: 'auto 500px' }}
+      >
         <p className="text-xs uppercase tracking-[0.4em] text-white hero-text-enter">The New Standard</p>
-        <h1 className="text-3xl md:text-5xl lg:text-8xl font-bold uppercase tracking-tight leading-none text-white font-display hero-text-enter">
+        <h1 className="text-3xl md:text-5xl lg:text-8xl font-bold uppercase tracking-tight leading-none text-white font-display hero-text-enter transform-gpu will-change-transform scale-100 filter-none">
           STYRA<span className="text-[#DC2626]">.</span> UNAPOLOGETICALLY YOU.
         </h1>
         <p className="text-lg md:text-xl font-light text-white leading-relaxed hero-text-enter">
